@@ -16,9 +16,9 @@ from flask import (jsonify,
 def handler_error(error: exceptions) -> Union[Tuple[str, int], Tuple[wrappers.Response, int]]:
     """A generic handler for HTTP error
 
-    :param error:
-    :type:
-    :return:
+    :param error: catch error from HTTP response
+    :type: werkzeug.exceptions
+    :return: HTML template with error (APP) or a JSON formatted error response
     """
     # Error come from API
     if request.path.startswith("/api/"):

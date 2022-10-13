@@ -59,7 +59,7 @@ def fulltext_search(query: str, exact_match: bool = False, limit_threshold: int 
     # Exact string matching
     if exact_match:
         return Quote.query.filter(Quote.quote.like(f"% {query} %")).limit(limit_threshold)
-    # Fuzzy string matching
+    # Fuzzy string matching (using msearch)
     return Quote.query.msearch(query, fields=['quote']).limit(limit_threshold)
 
 
@@ -102,6 +102,7 @@ def check_cast_bool(arg: str) -> bool:
     :return: a boolean value
     """
     if arg is not None:
+        # prevent uppercase True or true
         arg = arg.lower()
         if arg == "true":
             return True
@@ -120,6 +121,7 @@ def check_params_post_request(base_params: dict, params_to_check: dict) -> dict:
     """
     for param, value in params_to_check.items():
         if param in base_params.keys():
+            # fill the base params with value associated
             base_params[param] = value
         else:
             # case if params in POST request is wrong
@@ -147,6 +149,7 @@ def search_quotes():
         "exact": False
     }
     if request.method == "GET":
+        # fetch args from user parameters submitted in dict form
         parameters = {
             "rows": request.args.get('rows', None, type=int),
             "q": request.args.get('q', "", type=str),
@@ -155,7 +158,7 @@ def search_quotes():
 
     elif request.method == "POST":
         # check if user provided data in JSON else return
-        # all quote with dafault dict parameters
+        # all quote with default dict parameters
         if request.is_json:
             parameters = check_params_post_request(base_params=parameters,
                                                    params_to_check=request.json)
@@ -308,6 +311,7 @@ def check_password(username: str, password: str) -> bool:
     :rtype: bool
     """
     user = User.query.filter_by(username=username).first()
+    # check if user not exists or if password is not correct or user has no admin role
     if not user or not user.verify_password(password) or not user.role == "admin":
         return False
     return True
@@ -323,6 +327,7 @@ def delete_quote(quote_id):
     # DELETE: delete completely quote from database (?)
     if request.method in ("DELETE", "GET"):
         try:
+            # get the quote that removed
             old_quote = Quote.delete_quote(quote_id)
             status = 200
         except (AttributeError, KeyError):
@@ -354,6 +359,7 @@ def update_quote():
         parameters = check_params_post_request(base_params=parameters_accepted,
                                                params_to_check=request.json)
         try:
+            # get the quote that updated
             quote_to_update = Quote.updated_quote(new_values=parameters)
             status = 200
         except (AttributeError, KeyError):

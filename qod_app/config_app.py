@@ -115,8 +115,10 @@ def create_app(mode: str = "dev", erase_db: bool = False):
                                 static_folder=STATICS,
                                 instance_relative_config=True)
 
-    # register subdomains services (API/APP) with blueprints to set
-    # different URL rules
+    # register subdomains services (API/APP) with blueprints
+    # to set different URL rules.
+    # the advantage is to be able
+    # to modulate the application by correctly separating the API from the frontend APP
     quote_generator_app.register_blueprint(API_BP, url_prefix='/api')
     quote_generator_app.register_blueprint(APP_BP)
 
@@ -137,7 +139,7 @@ def create_app(mode: str = "dev", erase_db: bool = False):
     quote_generator_app.register_error_handler(405, handler_error)
     quote_generator_app.register_error_handler(500, handler_error)
 
-    # initialise an application for the use with this database setup
+    # initialise an application with this database setup associated
     db.init_app(quote_generator_app)
 
     # clear, recreate & populate db if necessary

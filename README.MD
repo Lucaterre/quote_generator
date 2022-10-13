@@ -38,7 +38,6 @@ Nous avons complexifier un peu l'exercice initial par:
 - [Lancement des tests](#lancement-des-tests)
 - [Les outils utilisés](#les-outils-utilisés)
 - [Structure générale du projet](#structure-générale-du-projet)
-- [Améliorations et fonctionnalités futures](#améliorations-et-fonctionnalités-futures)
 
 ## Installation du projet
 

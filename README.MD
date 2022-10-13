@@ -13,11 +13,11 @@ Ce projet est issu de l'exercice proposé sur [Coding Dojo](https://codingdojo.o
 Nous présentons ici le projet Quote generator qui se propose de résoudre l'exercice par le biais de la construction d'une API comprenant un certain nombre de méthodes, notamment celle remplissant l'objectif de l'auteur ; ainsi que d'une interface web pour appeler ces mêmes méthodes pour des utilisateurs finaux.
 Ces deux services sont implémentés grâce au micro-framework Flask en Python et séparés en sous-domaines (ainsi la migration de l'API vers un autre framework est possible sans avoir à revoir l'entièreté du projet).
 
-Plutôt que d'appeler une API déjà existante qui renvoie des citations (à l'aide du module `requests` par exemple) nous avons choisi de partir d'un dataset existant pré-traité et de l'injecter dans une base données SQLlite. Le but étant de pouvoir récupérer aléatoirement une citation : script de traitement [ici](./qod_app/json_quote_preprocess.py) - suppression des citations offensantes, régularisation de l'encodage, suppression des doublons etc. - et source du dataset sur le site [Kaggle](https://www.kaggle.com/datasets/akmittal/quotes-dataset))
+Plutôt que d'appeler une API déjà existante qui renvoie des citations (à l'aide du module `requests` par exemple) nous avons choisi de partir d'un dataset existant a traiter avant de l'injecter dans une base données de type SQLlite. Le script de traitement du dataset est disponible [ici](./qod_app/json_quote_preprocess.py) - suppression des citations offensantes, régularisation de l'encodage, suppression des doublons etc. - et la source du dataset est disponible sur le site [Kaggle](https://www.kaggle.com/datasets/akmittal/quotes-dataset))
 
-Pour répondre aux objectifs :
-- accéder à une citation aléatoire ; ex : http://127.0.0.1:3000/api/random 
-- accéder à une citation aléatoire qui contient le terme à rechercher ; ex: http://127.0.0.1:3000/api/random?q=moon
+Pour répondre aux objectifs du projet via ce projet :
+- générer une citation aléatoire ; ex : http://127.0.0.1:3000/api/random 
+- générer une citation aléatoire qui contient le terme à rechercher ; ex: http://127.0.0.1:3000/api/random?q=moon
 
 Nous avons complexifier un peu l'exercice initial par:
   - la récupération des citations depuis une base de données SQL ;
@@ -183,11 +183,11 @@ La structure du projet est base sur la structure traditionnelle d'un projet Flas
 |    |
 │    ├── config_app.py: classes et fonctions de configuration et d'initialisation de l'environnement de la base de données et de l'application
 |    |
-│    ├── constants.py: ensemble de constantes utilisées dans le projet (ex. chemins relatifs, template de réponse etc.)
+│    ├── constants.py: constantes utilisées dans le projet (ex. chemins relatifs, template de réponse etc.)
 |    |
 │    ├── extensions.py: initialisation des extensions Flask
 |    |
-│    ├── json_quote_preprocess.py: script individuel pour pré-traité le dataset de citations disponible dans data/
+│    ├── json_quote_preprocess.py: script individuel pour pré-traiter le dataset de citations disponible dans data/
 |    
 ├── LICENSE
 │   

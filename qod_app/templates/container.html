@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- header | navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('app.home') }}">Quote Generator</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('app.search_quote') }}">Searching</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    {% block content %}{% endblock content %}
+{% endblock body %}

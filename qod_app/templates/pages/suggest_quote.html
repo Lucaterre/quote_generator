@@ -1,0 +1,53 @@
+{% extends 'container.html' %}
+
+{% block content %}
+    <div class="container">
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        {% if category == 'message' %}
+                            <div class="alert alert-success" role="alert">
+                        {% else %}
+                            <div class="alert alert-{{ category }}" role="alert">
+                        {% endif %}
+                    {{ message }}
+                    </div>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <h1>Suggest a new quote</h1>
+        <form method="post">
+            <label for="Author">Author</label>
+            <br>
+            <input type="Author" name="Author"
+                   placeholder="Author"
+                   value="{{ request.form['author'] }}">
+            <br>
+            <label for="Category">Category</label>
+            <br>
+            <input type="Category" name="Category"
+                   placeholder="Category"
+                   value="{{ request.form['category'] }}">
+            <br>
+            <label for="Source">Source</label>
+            <br>
+            <input type="Source" name="Source"
+                   placeholder="Source"
+                   value="{{ request.form['source'] }}">
+            <br>
+            <label for="content">Quote</label>
+            <br>
+            <textarea name="content"
+                      placeholder="Quote text"
+                      rows="15"
+                      cols="60"
+            >{{ request.form['quote'] }}</textarea>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock content %}

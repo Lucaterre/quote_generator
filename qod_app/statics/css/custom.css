@@ -1,0 +1,50 @@
+/*
+This CSS is adapted from:
+https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-random-quote-machine
+ */
+
+.box-container {
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+.box {
+  border-radius: 5px;
+  position: relative;
+  padding: 40px 50px;
+  width: 300px;
+  margin: 0 80px 50px 0;
+  background: #ffffff;
+}
+
+h1 {
+    font-size: 20px;
+    margin: 0 0 2rem 0;
+  }
+
+.quote_message {
+  font-style: italic;
+}
+
+.quote-desc {
+    height: auto;
+    clear: both;
+    font-size: 1em;
+    text-align: right;
+  }
+
+#author{
+  font-weight: bold;
+}
+
+.btnGenerate {
+  float: right;
+  color: #ffffff;
+}
+
+.displayText {
+  margin: 0 0 30px 0;
+}
+
+/**/

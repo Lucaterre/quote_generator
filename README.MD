@@ -1,6 +1,6 @@
 # Quote generator
 
-![Python Version](https://img.shields.io/badge/Python-%3E%3D%203.8-%2313aab7) 
+![Python Version](https://img.shields.io/badge/Python-%3E%3D%203.8-%2313aab7) [![Quote Generator CI build](https://github.com/Lucaterre/quote_generator/actions/workflows/CI.yml/badge.svg)](https://github.com/Lucaterre/quote_generator/actions/workflows/CI.yml)
 
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 
